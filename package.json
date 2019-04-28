@@ -1,6 +1,6 @@
 {
   "name": "json-all-to-one",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JSON files concatenation.",
   "main": "json-all-to-one.js",
   "bin": "./json-all-to-one.js",
