@@ -31,9 +31,9 @@ You will receive a file:
 ```json
 {
   "data": [
-    { object1 },
-    { object2 },
-    { etc }
+    { "object1" },
+    { "object2" },
+    { "etc" }
   ]
 }
 ```
