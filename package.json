@@ -3,7 +3,9 @@
   "version": "0.1.1",
   "description": "JSON files concatenation.",
   "main": "json-all-to-one.js",
-  "bin": "./json-all-to-one.js",
+  "bin": {
+    "json-all-to-one": "./json-all-to-one.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
