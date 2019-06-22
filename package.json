@@ -1,6 +1,6 @@
 {
   "name": "json-all-to-one",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "JSON files concatenation.",
   "main": "json-all-to-one.js",
   "bin": {
@@ -28,6 +28,6 @@
     "eslint-plugin-import": "^2.17.2"
   },
   "dependencies": {
-    "pretty-data": "^0.40.0"
+    "arg": "^4.1.0"
   }
 }
