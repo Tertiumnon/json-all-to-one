@@ -20,10 +20,28 @@ Let's do it!
 npm i -g json-all-to-one
 ```
 
+## Params
+
+```text
+// Types
+'--source': String, // path to source filename
+'--output': String, // output filename
+'--name': String, // wrapper name
+'--childrenOf': String, // get children of
+
+// Aliases
+'-s': '--source',
+'-o': '--output',
+'-n': '--name',
+'-c': '--childrenOf',
+```
+
 ## Use
 
+### Example 1
+
 ```bash
-json-all-to-one <dir-with-json-files> <file-to-write>
+json-all-to-one -s 'some-dir' -o 'all-in-one.json'
 ```
 
 You will receive a file:
@@ -31,6 +49,42 @@ You will receive a file:
 ```json
 {
   "data": [
+    { "object1" },
+    { "object2" },
+    { "etc" }
+  ]
+}
+```
+
+### Example 2
+
+```bash
+json-all-to-one -s 'some-dir' -o 'all-in-one.json' -n 'xxx'
+```
+
+You will receive a file:
+
+```json
+{
+  "xxx": [
+    { "object1" },
+    { "object2" },
+    { "etc" }
+  ]
+}
+```
+
+### Example 3
+
+```bash
+json-all-to-one -s 'some-dir' -o 'all-in-one.json' -c 'old-data'
+```
+
+If you want to get objects inside parent "old-data" (some-dir/file-1)
+
+```json
+{
+  "old-data": [
     { "object1" },
     { "object2" },
     { "etc" }
