@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## 0.2.1
+
+- Fixed error if there's a dir in source directory
+
 ## 0.2.0
 
 - Added command-line arguments flags
