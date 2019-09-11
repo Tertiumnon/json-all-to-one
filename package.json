@@ -1,6 +1,6 @@
 {
   "name": "json-all-to-one",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "JSON files concatenation.",
   "main": "json-all-to-one.js",
   "bin": {
@@ -24,10 +24,11 @@
   "homepage": "https://github.com/Tertiumnon/json-all-to-one#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.2"
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2"
   },
   "dependencies": {
-    "arg": "^4.1.0"
+    "arg": "^4.1.1",
+    "logger": "0.0.1"
   }
 }

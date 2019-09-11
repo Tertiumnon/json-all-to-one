@@ -10,7 +10,7 @@ dir/
   file-2.json
 ```
 
-You want to contatenate all of them to one file.
+You want to concatenate all of them to one file.
 
 Let's do it!
 
