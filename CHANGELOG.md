@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## 0.2.1
+## 0.2.2
 
 - Fixed error if there's a dir in source directory
 
