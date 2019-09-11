@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const arg = require('arg');
+const logger = require('logger').createLogger();
 
 const args = arg({
   // Types
@@ -22,15 +24,15 @@ const newData = {
   [args['--name']]: [],
 };
 
-const getFilenames = new Promise((resolve, reject) => fs.readdir(args['--source'], (err, filenames) => {
-  console.time('json files merging');
-  if (err) reject(err);
-  resolve(files = filenames);
-}));
+const getFilenames = new Promise((resolve, reject) => fs.readdir(args['--source'],
+  { withFileTypes: true }, (err, results) => {
+    console.time('json files merging');
+    logger.debug(results);
+    if (err) reject(err);
+    resolve(files = results.filter(r => !r.isDirectory()).map(r => r.name));
+  }));
 
-const prettifyData = (data) => {
-  return JSON.stringify(data, null, 4);
-};
+const prettifyData = data => JSON.stringify(data, null, 4);
 
 const writeOutputFile = () => new Promise((resolve, reject) => fs.writeFile(args['--output'], prettifyData(newData), { flag: 'w' }, (err) => {
   if (err) reject(err);
@@ -47,9 +49,13 @@ const addData = (data) => {
 
 const readFile = file => new Promise((resolve, reject) => fs.readFile(`${args['--source']}/${file}`, (err, data) => {
   if (err) reject(err);
-  const parsedData = JSON.parse(data);
-  const fileData = args['--childrenOf'] ? parsedData[args['--childrenOf']] : parsedData;
-  resolve(addData(fileData));
+  try {
+    const parsedData = JSON.parse(data);
+    const fileData = args['--childrenOf'] ? parsedData[args['--childrenOf']] : parsedData;
+    resolve(addData(fileData));
+  } catch (parseErr) {
+    console.log(parseErr);
+  }
 }));
 
 const readSourceFiles = () => new Promise((resolve, reject) => {
