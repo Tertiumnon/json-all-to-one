@@ -1,18 +1,12 @@
 # JSON-all-to-one
 
-It is a script for a few JSON files concatenation to one.
-
-For example you have a directory with JSON files:
+Merge a directory of JSON files into one.
 
 ```text
 dir/
   file-1.json
   file-2.json
 ```
-
-You want to contatenate all of them to one file.
-
-Let's do it!
 
 ## Install
 
