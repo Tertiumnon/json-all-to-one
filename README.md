@@ -91,3 +91,7 @@ If you want to get objects inside parent "old-data" (some-dir/file-1)
   ]
 }
 ```
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).
