@@ -19,7 +19,7 @@
     "json"
   ],
   "author": "Vitaliy Balabanov <tertiumnon@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Tertiumnon/json-all-to-one/issues"
   },
