@@ -1,4 +1,4 @@
-# JSON-all-to-one
+# JSON All to One
 
 It is a script for a few JSON files concatenation to one.
 
