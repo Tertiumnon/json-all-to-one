@@ -49,11 +49,6 @@ import { concatenate } from 'json-all-to-one';
 await concatenate('./dir-with-json-files', './out.json');
 ```
 
-## Documentation
-
-- [Install](docs/INSTALL.md)
-- [Development](docs/DEVELOPMENT.md)
-
 ## Support
 
 If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).
