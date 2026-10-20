@@ -1,6 +1,6 @@
 # JSON All to One
 
-Merge a directory of JSON files into one.
+CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key.
 
 ```text
 dir/
