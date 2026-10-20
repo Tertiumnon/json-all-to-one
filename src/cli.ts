@@ -1,16 +1,28 @@
 #!/usr/bin/env node
 
+import { parseArgs } from 'node:util';
 import { concatenate } from './lib.ts';
 
-const [dir, targetFile] = process.argv.slice(2);
+const USAGE = 'Usage: json-all-to-one -s <dir-with-json-files> -o <file-to-write> [-n <wrapper-name>] [-c <property>]\n';
 
-if (!dir || !targetFile) {
-  process.stderr.write('Usage: json-all-to-one <dir-with-json-files> <file-to-write>\n');
+const { values } = parseArgs({
+  options: {
+    source: { type: 'string', short: 's' },
+    output: { type: 'string', short: 'o' },
+    name: { type: 'string', short: 'n' },
+    childrenOf: { type: 'string', short: 'c' },
+  },
+});
+
+if (!values.source || !values.output) {
+  process.stderr.write(USAGE);
   process.exit(1);
 }
 
 try {
-  await concatenate(dir, targetFile, {
+  await concatenate(values.source, values.output, {
+    name: values.name,
+    childrenOf: values.childrenOf,
     onProgress: (count, total) => process.stdout.write(`(1/2) files: ${count} / ${total}\r`),
   });
   process.stdout.write('\n(2/2) done\n');

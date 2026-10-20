@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test } from 'bun:test';
-import { mkdtempSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { concatenate } from '../src/lib.ts';
@@ -92,5 +92,51 @@ describe('concatenate', () => {
 
     expect(calls).toHaveLength(2);
     expect(calls[calls.length - 1]).toEqual([2, 2]);
+  });
+
+  test('wraps the items in the given name', async () => {
+    writeSourceFile('file-1.json', '{"a":1}');
+
+    await concatenate(dir, targetFile, { name: 'items' });
+
+    expect(JSON.parse(readFileSync(targetFile, 'utf8'))).toEqual({ items: [{ a: 1 }] });
+  });
+
+  test('takes the childrenOf property of each file', async () => {
+    writeSourceFile('file-1.json', '{"old":{"a":1}}');
+    writeSourceFile('file-2.json', '{"old":{"b":2}}');
+
+    await concatenate(dir, targetFile, { childrenOf: 'old' });
+
+    const result = JSON.parse(readFileSync(targetFile, 'utf8'));
+    expect(result.data).toHaveLength(2);
+    expect(result.data).toContainEqual({ a: 1 });
+    expect(result.data).toContainEqual({ b: 2 });
+  });
+
+  test('rejects when a file lacks the childrenOf property', async () => {
+    writeSourceFile('file-1.json', '{"a":1}');
+
+    await expect(concatenate(dir, targetFile, { childrenOf: 'old' })).rejects.toThrow('file-1.json has no "old" property');
+  });
+
+  test('adds the items of a file that holds a list', async () => {
+    writeSourceFile('file-1.json', '[{"a":1},{"b":2}]');
+    writeSourceFile('file-2.json', '{"c":3}');
+
+    await concatenate(dir, targetFile);
+
+    const result = JSON.parse(readFileSync(targetFile, 'utf8'));
+    expect(result.data).toHaveLength(3);
+    expect(result.data).toContainEqual({ c: 3 });
+  });
+
+  test('skips folders inside the source directory', async () => {
+    writeSourceFile('file-1.json', '{"a":1}');
+    mkdirSync(join(dir, 'nested'));
+
+    await concatenate(dir, targetFile);
+
+    expect(JSON.parse(readFileSync(targetFile, 'utf8'))).toEqual({ data: [{ a: 1 }] });
   });
 });

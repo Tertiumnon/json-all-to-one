@@ -17,7 +17,7 @@ npm i -g json-all-to-one
 ## Use
 
 ```bash
-json-all-to-one <dir-with-json-files> <file-to-write>
+json-all-to-one -s 'some-dir' -o 'all-in-one.json'
 ```
 
 You will receive a file:
@@ -30,6 +30,19 @@ You will receive a file:
     { "etc" }
   ]
 }
+```
+
+A file that holds a list adds its items, and folders inside the source directory are skipped.
+
+| Flag | Meaning |
+| --- | --- |
+| `-s`, `--source` | Directory with the JSON files (required) |
+| `-o`, `--output` | File to write (required) |
+| `-n`, `--name` | Key that wraps the items, `data` by default |
+| `-c`, `--childrenOf` | Take this property of each file instead of the whole file |
+
+```bash
+json-all-to-one -s 'some-dir' -o 'all-in-one.json' -n 'xxx' -c 'old-data'
 ```
 
 Zero runtime dependencies. Works under both Node.js and [Bun](https://bun.sh).
