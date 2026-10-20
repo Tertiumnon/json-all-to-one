@@ -1,4 +1,4 @@
-# JSON-all-to-one
+# JSON All to One
 
 Merge a directory of JSON files into one.
 
@@ -80,3 +80,7 @@ biome check .     # lint + format check
 bun run build     # compile src/ to dist/ (lib.js, lib.d.ts, cli.js) for npm publish
 bun run compile   # bundle a standalone native binary to dist/json-all-to-one (no Node/Bun install required to run it)
 ```
+
+## Support
+
+If this project is useful to you, you can support its development on [Ko-fi](https://ko-fi.com/tertiumnon).

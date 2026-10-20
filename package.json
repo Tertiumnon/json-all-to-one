@@ -1,6 +1,6 @@
 {
   "name": "json-all-to-one",
-  "version": "0.3.0",
+  "version": "0.2.4",
   "description": "JSON files concatenation.",
   "type": "module",
   "main": "./dist/lib.js",
@@ -24,7 +24,11 @@
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "prepublishOnly": "bun run typecheck && bun run test && bun run build"
+    "prepublishOnly": "bun run typecheck && bun run test && bun run build",
+    "changelog": "npx @tertium/gith changelog",
+    "release:patch": "npx @tertium/gith release --patch",
+    "release:minor": "npx @tertium/gith release --minor",
+    "release:major": "npx @tertium/gith release --major"
   },
   "repository": {
     "type": "git",
@@ -34,7 +38,7 @@
     "json"
   ],
   "author": "Vitaliy Balabanov <tertiumnon@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Tertiumnon/json-all-to-one/issues"
   },
