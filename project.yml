@@ -1,3 +1,19 @@
 type: cli
-publish_on:
+slug: json-all-to-one
+listed_on:
   - https://tertiumnon.github.io
+display_name:
+  en: "JSON All to One"
+summary:
+  en: "CLI that concatenates several JSON files from a directory into one file, optionally wrapped under a key."
+languages:
+  - en
+default_language: en
+distribution:
+  - npm
+team:
+  - name: Vitalii Balabanov
+    roles:
+      - owner
+      - developer
+    github: Tertiumnon
